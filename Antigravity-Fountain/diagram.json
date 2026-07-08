@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "author": "Antigravity Agent",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-s3-devkitc-1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": { "env": "micropython-20231005-v1.21.0" }
+    },
+    {
+      "type": "wokwi-dc-motor",
+      "id": "motor1",
+      "top": -150,
+      "left": 200,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dc-motor",
+      "id": "motor2",
+      "top": 0,
+      "left": 200,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dc-motor",
+      "id": "motor3",
+      "top": 150,
+      "left": 200,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-neopixel",
+      "id": "pixel1",
+      "top": -200,
+      "left": 0,
+      "attrs": { "rgb": "grb" }
+    },
+    {
+      "type": "wokwi-neopixel",
+      "id": "pixel2",
+      "top": -200,
+      "left": 50,
+      "attrs": { "rgb": "grb" }
+    },
+    {
+      "type": "wokwi-neopixel",
+      "id": "pixel3",
+      "top": -200,
+      "left": 100,
+      "attrs": { "rgb": "grb" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "esp:RX", "green", [] ],
+    
+    [ "esp:4", "motor1:V+", "red", [] ],
+    [ "esp:GND", "motor1:GND", "black", [] ],
+    
+    [ "esp:5", "motor2:V+", "red", [] ],
+    [ "esp:GND", "motor2:GND", "black", [] ],
+    
+    [ "esp:6", "motor3:V+", "red", [] ],
+    [ "esp:GND", "motor3:GND", "black", [] ],
+    
+    [ "esp:48", "pixel1:DIN", "blue", [] ],
+    [ "esp:3V3", "pixel1:VDD", "red", [] ],
+    [ "esp:GND", "pixel1:VSS", "black", [] ],
+    
+    [ "pixel1:DOUT", "pixel2:DIN", "blue", [] ],
+    [ "esp:3V3", "pixel2:VDD", "red", [] ],
+    [ "esp:GND", "pixel2:VSS", "black", [] ],
+    
+    [ "pixel2:DOUT", "pixel3:DIN", "blue", [] ],
+    [ "esp:3V3", "pixel3:VDD", "red", [] ],
+    [ "esp:GND", "pixel3:VSS", "black", [] ]
+  ]
+}
