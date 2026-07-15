@@ -54,8 +54,6 @@
     }
   ],
   "connections": [
-    [ "esp:TX", "esp:RX", "green", [] ],
-    
     [ "esp:4", "motor1:V+", "red", [] ],
     [ "esp:GND", "motor1:GND", "black", [] ],
     

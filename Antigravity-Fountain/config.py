@@ -1,15 +1,16 @@
 # Configuration for ESP32-S3 Show Sequencer
 
-# --- Wi-Fi Credentials ---
-# For Wokwi simulation, use "Wokwi-GUEST" with empty password
-WIFI_SSID = "Wokwi-GUEST"
-WIFI_PASS = ""
+# IH260713 Wifi ad Blynk credentials moved to config.toml
+# # --- Wi-Fi Credentials ---
+# # For Wokwi simulation, use "Wokwi-GUEST" with empty password
+# WIFI_SSID = "Wokwi-GUEST"
+# WIFI_PASS = ""
 
-# --- Blynk IoT Credentials ---
-# Replace these with your actual Blynk IoT credentials
-BLYNK_TEMPLATE_ID = "TMPLxxxxxx"
-BLYNK_TEMPLATE_NAME = "FountainSequencer"
-BLYNK_AUTH_TOKEN = "your_blynk_auth_token_here"
+# # --- Blynk IoT Credentials ---
+# # Replace these with your actual Blynk IoT credentials
+# BLYNK_TEMPLATE_ID = "TMPLxxxxxx"
+# BLYNK_TEMPLATE_NAME = "FountainSequencer"
+# BLYNK_AUTH_TOKEN = "your_blynk_auth_token_here"
 
 # --- Actuator / Device Pins ---
 # Pump Motors (PWM-controlled)

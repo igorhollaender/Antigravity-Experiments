@@ -1,4 +1,3 @@
 [wokwi]
 version = 1
-firmware = "UM_FEATHERS3-20260406-v1.28.0.bin"
-elf = "micropython.elf"
+firmware = "ESP32_GENERIC_S3-20260406-v1.28.0.bin"

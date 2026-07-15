@@ -1,9 +1,11 @@
 # Sequencer Engine for ESP32-S3 Show Sequencer
 
-try:
-    import uasyncio as asyncio
-except ImportError:
-    import asyncio
+#IH260713 simply using asyncio
+import asyncio     
+# try:
+#     import uasyncio as asyncio
+# except ImportError:
+#     import asyncio
 import sys
 
 # --- Playback States ---

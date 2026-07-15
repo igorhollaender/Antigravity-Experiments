@@ -1,16 +1,21 @@
 # Main Control Loop & Blynk Interface for ESP32-S3 Show Sequencer
 
-import uasyncio as asyncio
+# IH260713 simply using asyncio
+# import uasyncio as asyncio
+import asyncio
 import network
 import time
 import machine
 import sys
-import urequests
+import requests
 
 import config
 import devices
 import sequencer
 import BlynkLib
+
+# IH260713 
+import tomllib
 
 # --- Global State Variables ---
 selected_sequence = "sequence_demo"  # Default sequence
@@ -44,12 +49,22 @@ devices_mgr.stop_all()
 # --- Initialize Sequencer Engine ---
 seq = sequencer.Sequencer(devices_mgr)
 
+
+#IH260713 Load Wi-Fi and Blynk credentials from config.toml
+with open("config.toml", "rb") as f:
+    config_data = tomllib.load(f)
+    config.WIFI_SSID = config_data.get("wifi", {}).get("ssid", "")
+    config.WIFI_PASS = config_data.get("wifi", {}).get("password", "")
+    config.BLYNK_TEMPLATE_ID = config_data.get("blynk", {}).get("template_id", "")
+    config.BLYNK_TEMPLATE_NAME = config_data.get("blynk", {}).get("template_name", "")
+    config.BLYNK_AUTH_TOKEN = config_data.get("blynk", {}).get("auth_token", "")
+
 # --- Wi-Fi Connection Manager ---
 def connect_wifi():
     wlan = network.WLAN(network.STA_IF)
     wlan.active(True)
     if not wlan.isconnected():
-        print("Connecting to Wi-Fi SSID '{}'...".format(config.WIFI_SSID))
+        print("Connecting to Wi-Fi SSID '{}'...".s(config.WIFI_SSID))
         wlan.connect(config.WIFI_SSID, config.WIFI_PASS)
         # Wait for connection (timeout after 15s)
         start_time = time.time()
@@ -192,7 +207,7 @@ async def perform_ota_download():
     print("OTA: Fetching file from {} ...".format(ota_url))
     try:
         # Perform HTTP GET request (yielding control during network wait)
-        response = urequests.get(ota_url)
+        response = requests.get(ota_url)
         if response.status_code == 200:
             content = response.text
             response.close()
